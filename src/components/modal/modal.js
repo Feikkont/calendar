@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import styled from '@emotion/styled'
-import { TextField } from '@mui/material';
+import {Input, TextField} from '@mui/material';
 
 
 const style = {
@@ -23,7 +23,7 @@ height: 100%;
 width: 100%;
 `
 
-export default function BasicModal({setFilledArr}) {
+export default function BasicModal({callback}) {
   const [open, setOpen] = React.useState(false);
   const [vks, setVks] = useState({
     startTime:'',
@@ -34,7 +34,7 @@ export default function BasicModal({setFilledArr}) {
   })
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
-        setFilledArr(vks)
+    callback(vks)
         setOpen(false)
        
     };
@@ -51,19 +51,19 @@ export default function BasicModal({setFilledArr}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        <TextField id="outlined-basic-startTime" label="startTime" variant="outlined" fullWidth
+        <TextField type='time' id="outlined-basic-startTime" helperText="startTime" variant="outlined" fullWidth
         onChange={(e)=>{setVks({...vks, startTime:e.target.value})}}
         />
-        <TextField id="outlined-basic-endTime" label="endTime" variant="outlined" fullWidth
+        <TextField type='time' id="outlined-basic-endTime" helperText="endTime" variant="outlined" fullWidth
         onChange={(e)=>{setVks({...vks, endTime:e.target.value})}}
         />
-        <TextField id="outlined-basic-name" label="name" variant="outlined" fullWidth
+        <TextField id="outlined-basic-name" helperText="name" variant="outlined" fullWidth
         onChange={(e)=>{setVks({...vks, name:e.target.value})}}
         />
-        <TextField id="outlined-basic-discription" label="discription" variant="outlined" fullWidth
+        <TextField id="outlined-basic-discription" helperText="discription" variant="outlined" fullWidth
         onChange={(e)=>{setVks({...vks, discription:e.target.value})}}
         />
-        <TextField id="outlined-basic-organizator" label="organizator" variant="outlined" fullWidth
+        <TextField id="outlined-basic-organizator" helperText="organizator" variant="outlined" fullWidth
         onChange={(e)=>{setVks({...vks, organizator:e.target.value})}}
         />
         <Button onClick={handleClose}>Готово</Button>
