@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import styled from '@emotion/styled'
 import {Input, TextField} from '@mui/material';
+import moment from 'moment';
 
 
 const style = {
@@ -32,10 +33,23 @@ export default function BasicModal({callback}) {
     discription:'',
     organizator: ''
   })
+
+
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
-    callback(vks)
-        setOpen(false)
+    const startTime = moment(vks.startTime, "hh:mm");
+    const endTime = moment(vks.endTime, "hh:mm");
+
+    console.log('vks', vks)
+    console.log('startTimemoment', startTime.hour()*60 + startTime.minute());
+    console.log('endTimemoment', endTime.hour()*60 + endTime.minute())
+    let tempVKS = vks;
+    tempVKS.startTime = startTime.hour()*60 + startTime.minute();
+    tempVKS.endTime = endTime.hour()*60 + endTime.minute();
+
+    callback(tempVKS)
+    setOpen(false)
        
     };
 
