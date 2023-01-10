@@ -33,9 +33,6 @@ export default function BasicModal({callback}) {
     discription:'',
     organizator: ''
   })
-
-
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     const startTime = moment(vks.startTime, "hh:mm");
@@ -47,17 +44,15 @@ export default function BasicModal({callback}) {
     let tempVKS = vks;
     tempVKS.startTime = startTime.hour()*60 + startTime.minute();
     tempVKS.endTime = endTime.hour()*60 + endTime.minute();
-
     callback(tempVKS)
     setOpen(false)
-       
     };
 
 
   return (
     <div style={{width:'100%', height:'100%'}}>
       {/* <Button onClick={handleOpen}></Button> */}
-      <Div onClick={handleOpen}/>
+      {/*<Div onClick={handleOpen}/>*/}
       <Modal
         open={open}
         onClose={handleClose}

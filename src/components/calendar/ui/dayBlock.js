@@ -18,7 +18,7 @@ export const DayBlock = () => {
     console.log('рендер')
     const [filledArr, setFilledArr] = useState([])
     let rowArr = []
-    for (let i = 1; i <= 48; i++) {
+    for (let i = 1; i <= 22; i++) {
         rowArr.push(i);
     }
     const handleAddItem = (element) =>{
